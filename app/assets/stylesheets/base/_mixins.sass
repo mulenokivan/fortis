@@ -1,0 +1,19 @@
+=declare-font-face($font-family, $font-filename, $font-weight: normal, $font-style: normal, $font-stretch: normal)
+  @font-face
+    font-family: "#{$font-family}"
+    src: url("#{$font-filename}.ttf") format("truetype")
+    font-weight: $font-weight
+    font-style: $font-style
+    font-stretch: $font-stretch
+
+=media-desktop
+  @media (min-width: #{$desktop})
+    @content
+
+=media-tablet
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px})
+    @content
+
+=media-mobile
+  @media (max-width: #{$tablet - 1px})
+    @content

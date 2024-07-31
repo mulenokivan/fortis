@@ -1,0 +1,51 @@
+.avatar
+
+  &__image
+    position: relative
+    width: 230px
+    height: 236px
+    border-radius: 11px
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+
+    &--sm
+      width: 125px
+      height: 125px
+      min-width: 125px
+      min-height: 125px
+      max-width: 125px
+      max-height: 125px
+
+    &--default
+      background-image: url('icons/default-avatar.png')
+      display: block
+
+  &__form
+    height: 100%
+    display: flex
+    align-items: end
+    justify-content: center
+    padding-bottom: 25px
+
+  &__delete
+    position: absolute
+    right: 0
+    top: 0
+
+  +media-tablet
+
+    &__image
+      width: 180px
+      height: 180px
+
+    &__form
+      padding-bottom: 0
+
+  +media-mobile
+
+    &__image
+      width: 220px
+      height: 220px
+      margin-left: auto
+      margin-right: auto

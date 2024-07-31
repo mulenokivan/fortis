@@ -1,14 +1,16 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'active_storage_validations'
+gem "active_storage_validations"
 gem "bootsnap", require: false
+gem "dartsass-rails"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.0"
 gem "redis", "~> 4.0"
+gem 'simple_form'
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
@@ -19,7 +21,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'annotate'
+  gem "annotate"
   gem "web-console"
 end
 

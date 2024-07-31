@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <meta name="turbo-refresh-method" content="morph">
+    <meta name="turbo-refresh-scroll" content="preserve">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", media: "all" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'nav' %>
+    <main>
+      <div class='container'>
+        <%= yield %>
+      </div>
+    </main>
+    <%= render 'footer' %>
   </body>
 </html>

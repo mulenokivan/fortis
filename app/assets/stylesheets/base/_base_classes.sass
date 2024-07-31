@@ -1,0 +1,60 @@
+.container
+  position: relative
+  margin-right: auto
+  margin-left: auto
+  padding-left: 15px
+  padding-right: 15px
+
+  +media-desktop
+    width: 1170px
+
+  +media-tablet
+    width: 750px
+
+.desktop-only
+  @media (max-width: #{$desktop - 1px})
+    display: none !important
+
+.tablet-only
+  @media (min-width: #{$desktop}), (max-width: #{$tablet - 1px})
+    display: none !important
+
+.mobile-only
+  @media (min-width: #{$tablet})
+    display: none !important
+
+.js-hidden
+  display: none !important
+
+.js-visible
+  display: block !important
+
+.js-hidden-smooth
+  animation: out 700ms ease both
+
+.js-visible-smooth
+  animation: in 700ms ease both
+
+.js-sortable-handle
+  cursor: move
+  background: url('icons/bidirectional-arrow.svg') no-repeat center center
+  background-size: 100%
+  height: 25px
+  width: 25px
+  z-index: 1
+
+@keyframes in
+  0%
+    opacity: 0
+    visibility: hidden
+  100%
+    opacity: 1
+    visibility: visible
+
+@keyframes out
+  0%
+    opacity: 1
+    visibility: visible
+  100%
+    opacity: 0
+    visibility: hidden

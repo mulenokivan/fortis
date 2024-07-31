@@ -1,0 +1,14 @@
+<nav class="nav">
+  <div class="nav__outer">
+    <div class="container">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <%= link_to 'Home',
+            root_path,
+            class: 'nav__link ' + (current_page?(root_path) || current_page?(cvs_path) ? 'nav__link--active' : '')
+          %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

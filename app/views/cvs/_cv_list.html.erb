@@ -1,0 +1,26 @@
+<% @cvs.each do |cv| %>
+  <li class="list__item card">
+    <% if cv.avatar.present? %>
+      <div style="background-image: url(<%= rails_blob_url(cv.avatar) %>)"
+        class="avatar__image avatar__image--sm"
+      >
+      </div>
+    <% else %>
+      <div class="avatar__image avatar__image--default avatar__image--sm">
+      </div>
+    <% end %>
+    <div class="card__info">
+      <p class="card__fullname">
+        <%= cv.surname&.capitalize %>
+        <%= cv.name&.capitalize %>
+        <%= cv.patronymic&.capitalize %>
+      </p>
+    </div>
+    <div class="card__actions">
+      <%= link_to cv_path(cv), class: 'btn btn--primary' do %>
+        <span>Show</span>
+        <span class="icon icon--link"></span>
+      <% end %>
+    </div>
+  </li>
+<% end %>

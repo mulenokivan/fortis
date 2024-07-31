@@ -1,0 +1,44 @@
+.card
+  background-color: $color-neutral-light
+  padding: 15px
+  border-radius: $border-radius-lg
+  display: flex
+  gap: 20px
+  justify-content: space-between
+
+  &__info
+    display: flex
+    flex-direction: column
+    justify-content: center
+    gap: 5px
+    flex-grow: 1
+
+  &__fullname
+    color: $color-primary
+    font-weight: 600
+    font-size: 24px
+
+  &__term
+    color: $color-dark
+    font-weight: 600
+
+  &__actions
+    margin-left: auto
+    display: flex
+    flex-direction: column-reverse
+
+    &--right-between
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      align-items: end
+
+  +media-mobile
+    flex-direction: column
+
+    &__actions
+      flex-direction: row
+      justify-content: flex-start
+      gap: 10px
+      margin: 0
+      flex-wrap: wrap

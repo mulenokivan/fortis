@@ -1,0 +1,31 @@
+.icon
+  display: inline-block
+  width: 36px
+  height: 36px
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+
+  $icons-without-state: delete, link, plus, edit
+  @each $icon in $icons-without-state
+    &--#{$icon}
+      width: 14px
+      height: 14px
+      background-image: url('icons/#{$icon}.svg')
+
+  $icons: burger
+  @each $icon in $icons
+    &--#{$icon}
+      background-image: url('icons/#{$icon}.svg')
+      transition: 0.2s background ease-out
+
+      &:hover,
+      &:focus
+        background: transparent url('icons/#{$icon}-hover.svg') no-repeat center center
+
+    &--#{$icon}#{&}--active
+      background: transparent url('icons/#{$icon}-active.svg') no-repeat left center
+
+  &--lg
+    width: 36px
+    height: 36px
