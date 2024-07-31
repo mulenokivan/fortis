@@ -1,0 +1,26 @@
+<% if image.file.present? %>
+  <div class="image">
+    <%= image_tag image.file, class: 'image__file' %>
+  </div>
+<% else %>
+  <%= simple_form_for image do |form| %>
+    <div
+      class="input-file"
+      data-controller="input-file"
+    >
+      <div>
+        <span class="input-file__btn btn btn--primary">
+          <span class="input-file__placeholder">
+            Choose file
+          </span>
+          <%= form.file_field :file, :class => 'input-file__field js-input-file' %>
+        </span>
+        <span class="input-file__file js-input-file--span js-hidden">
+          Current file:
+        </span>
+      </div>
+      <%= render partial: 'alert', locals: {model: image} %>
+      <%= form.submit 'Save', class: 'input-file__save btn btn--primary' %>
+    </div>
+  <% end %>
+<% end %>

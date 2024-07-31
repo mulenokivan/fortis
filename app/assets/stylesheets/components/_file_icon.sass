@@ -1,0 +1,15 @@
+.file-icon
+  display: inline-block
+  background-image: url('file_icons/default.svg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  width: 22px
+  height: 22px
+
+  $file-icons: xls, xlsx, pdf, pptx, rar, rtf, doc, docx, zip, 7z, tg
+  @each $icon in $file-icons
+    &--#{$icon}
+      width: 22px
+      height: 22px
+      background-image: url('file_icons/#{$icon}.svg')

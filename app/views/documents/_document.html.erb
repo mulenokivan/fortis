@@ -1,0 +1,33 @@
+<div class="document">
+  <% if document.file.blob.present? %>
+    <span class="document__link">
+      <span class="document__icon file-icon file-icon--<%= document.file.blob.filename.to_s.split('.').last %>"></span>
+      <%= link_to document.file.blob.filename, rails_blob_path(document.file, discposition: 'inline') %>
+    </span>
+  <% else %>
+    <%= simple_form_for document do |form| %>
+      <div
+        class="input-file"
+        data-controller="input-file"
+      >
+        <%= form.input :file_name,
+          :input_html => { :class => 'input-file__file-name input__field input__field--text' },
+          :label_html => { :class => "input__label" },
+          label: 'Filename',
+          placeholder: 'Enter filename' %>
+        <div>
+          <span class="input-file__btn btn btn--primary">
+            <span class="input-file__placeholder">
+              Choose file
+            </span>
+            <%= form.file_field :file, :class => 'input-file__field js-input-file' %>
+          </span>
+          <span class="input-file__file js-input-file--span js-hidden">
+            Current file:
+          </span>
+        </div>
+        <%= form.submit 'Save', class: 'input-file__save btn btn--primary' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

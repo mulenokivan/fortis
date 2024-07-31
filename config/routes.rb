@@ -7,5 +7,13 @@ Rails.application.routes.draw do
     member do
       delete :destroy_avatar
     end
+    resources :content_blocks, only: :create do
+      collection do
+        patch :change_position
+      end
+    end
   end
+  resources :documents, only: %i[ create update destroy ]
+  resources :paragraphs, only: %i[ create update destroy ]
+  resources :images, only: %i[ create update destroy ]
 end

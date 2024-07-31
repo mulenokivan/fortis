@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_30_090828) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string "filename"
+    t.string "file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_30_090828) do
   end
 
   create_table "paragraphs", force: :cascade do |t|
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

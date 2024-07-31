@@ -1,0 +1,23 @@
+<div class="paragraph">
+  <%= simple_form_for paragraph, data: { controller: 'toggle-visible' } do |form| %>
+    <div class="paragraph__content js-toggle-visible">
+      <div data-action="click->toggle-visible#onShowContent">
+        <% if paragraph.text.present? %>
+          <%= paragraph.text %>
+        <% else %>
+          Click to add content
+        <% end %>
+      </div>
+    </div>
+
+    <div class="js-toggle-visible-content js-hidden">
+      <div>
+        <%= form.text_area :text, class: 'input-textarea', placeholder: 'Enter text...' %>
+      </div>
+      <div>
+        <%= form.submit 'Save', class: 'btn btn--primary' %>
+        <button type="button" class="cancel btn btn btn--primary" data-action="click->toggle-visible#onHideContent">Cancel</button>
+      </div>
+    </div>
+  <% end %>
+</div>

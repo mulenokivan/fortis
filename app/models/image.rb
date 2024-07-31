@@ -4,6 +4,6 @@ class Image < ApplicationRecord
 
   validates :file, content_type: {
     in: /\Aimage\/.*\z/,
-    message: 'Неподдерживаемый формат картинки. Поддерживаемые форматы: png, jpeg, jpg, svg'
+    message: 'Invalid image format. Available formats: png, jpeg, jpg, svg'
   }
 end

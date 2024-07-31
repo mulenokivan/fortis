@@ -1,0 +1,24 @@
+.fixed-menu
+  position: fixed
+  right: 60px
+  bottom: 60px
+  z-index: 10
+
+  &__inner
+    position: fixed
+    left: -300px
+    top: 0
+    height: 100%
+    background: $color-white
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px
+    padding: 20px
+    overflow-y: scroll
+    transition: left 0.3s
+    max-width: 300px
+
+  +media-mobile
+    right: 15px
+    bottom: 45px
+
+.js-fixed-menu--visible
+  left: 0

@@ -2,8 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    this.$block = document.querySelector('.js-toggle-visible')
-    this.$content = document.querySelector('.js-toggle-visible-content')
+    this.$block = this.element.querySelector('.js-toggle-visible')
+    this.$content = this.element.querySelector('.js-toggle-visible-content')
   }
 
   onShowContent() {
