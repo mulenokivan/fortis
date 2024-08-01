@@ -1,5 +1,6 @@
 class Cv < ApplicationRecord
   has_many :content_blocks, dependent: :destroy
+  belongs_to :user
   has_one_attached :avatar
   broadcasts_refreshes
 

@@ -1,5 +1,6 @@
 class CvsController < ApplicationController
   before_action :set_cv, only: %i[show edit update destroy destroy_avatar]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @cvs = Cv.all
@@ -14,7 +15,7 @@ class CvsController < ApplicationController
   end
 
   def create
-    @cv = Cv.new(cv_params)
+    @cv = Cv.new(cv_params.merge(user: current_user))
 
     if @cv.save
       redirect_to @cv, notice: "Cv was successfully created."
@@ -52,6 +53,6 @@ class CvsController < ApplicationController
     end
 
     def cv_params
-      params.require(:cv).permit(:name, :surname, :patronymic, :avatar)
+      params.require(:cv).permit(:name, :surname, :patronymic, :avatar, :user_id)
     end
 end

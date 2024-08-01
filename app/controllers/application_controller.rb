@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+
   def render_alert(model)
     flash.now[:alert] = model.errors.messages.values.join("\n")
     render turbo_stream: turbo_stream.update(

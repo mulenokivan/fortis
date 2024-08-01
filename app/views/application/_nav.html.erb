@@ -1,11 +1,18 @@
 <nav class="nav">
   <div class="nav__outer">
     <div class="container">
-      <ul class="nav__list">
+      <ul class="nav__list nav__list--between">
         <li class="nav__item">
           <%= link_to 'Home',
             root_path,
             class: 'nav__link ' + (current_page?(root_path) || current_page?(cvs_path) ? 'nav__link--active' : '')
+          %>
+        </li>
+        <li class="nav__item nav__item--auth">
+          <%= current_user ?
+            (button_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav__link')
+            :
+            (link_to 'Sign in', new_user_session_path, class: 'nav__link')
           %>
         </li>
       </ul>

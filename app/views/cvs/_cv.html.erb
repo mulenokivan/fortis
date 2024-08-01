@@ -11,16 +11,18 @@
         </div>
       <% else %>
         <div class="avatar__image avatar__image--default">
-          <%= simple_form_for cv, html: { class: "avatar__form" } do |form| %>
-            <span class="input input--file">
-              <label class="input__label">
-                Загрузить изображение
-              </label>
-              <%= form.file_field :avatar,
-                class: 'input__field',
-                onchange: "this.form.submit()"
-              %>
-            </span>
+          <% if author? %>
+            <%= simple_form_for cv, html: { class: "avatar__form" } do |form| %>
+              <span class="input input--file">
+                <label class="input__label">
+                  Загрузить изображение
+                </label>
+                <%= form.file_field :avatar,
+                  class: 'input__field',
+                  onchange: "this.form.submit()"
+                %>
+              </span>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -31,7 +33,9 @@
         <%= cv.surname&.capitalize %>
         <%= cv.name&.capitalize %>
         <%= cv.patronymic&.capitalize %>
-        <span class="icon icon--edit" data-action="click->toggle-visible#onShowContent"></span>
+        <% if author? %>
+          <span class="icon icon--edit" data-action="click->toggle-visible#onShowContent"></span>
+        <% end %>
       </div>
       <div class="js-toggle-visible-content js-hidden">
         <div class="form form__group form__group--inline ">
@@ -45,44 +49,39 @@
       </div>
     <% end %>
     </div>
-    <div class="card__actions card__actions--right-between">
-      <%= link_to 'Delete Cv', cv_path(cv), class: 'btn btn--danger',
-        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-    </div>
+    <% if author? %>
+      <div class="card__actions card__actions--right-between">
+        <%= link_to 'Delete Cv', cv_path(cv), class: 'btn btn--danger',
+          data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
   </div>
 
   <div data-controller="sortable" data-cv-id="<%= @cv.id %>">
-      <% @cv.content_blocks.order(position: :asc).each do |content_block| %>
-        <div class="content-block content-block--edit js-content-block" data-id="<%= content_block.id %>">
+    <% @cv.content_blocks.order(position: :asc).each do |content_block| %>
+      <div class="content-block <%= 'content-block--edit' if author? %> js-content-block" data-id="<%= content_block.id %>">
+        <% if author? %>
           <div class="content-block__actions content-block__actions--paragraph">
             <span class="js-sortable-handle"></span>
             <%= link_to '', polymorphic_path(content_block.content), class: 'icon icon--delete',
               data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
           </div>
-          <%= render content_block.content %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+        <%= render content_block.content %>
+      </div>
+    <% end %>
+  </div>
 
-    <div
-      class="fixed-menu"
-      data-controller="fixed-menu"
-    >
-      <button
-        class="icon icon--plus icon--lg"
-        data-action="click->fixed-menu#openMenu"
-      ></button>
+  <% if author? %>
+    <div class="fixed-menu" data-controller="fixed-menu">
+      <button class="icon icon--plus icon--lg" data-action="click->fixed-menu#openMenu"></button>
       <div class="fixed-menu__inner">
-        <h2>
-          Content blocks list
-        </h2>
+        <h2> Content blocks list </h2>
         <ul class="list">
           <% %w(Paragraph Image Document).each do |content_type| %>
             <li class="list__item content-type">
               <%= simple_form_for [@cv, @content_block] do |form| %>
-                <div
-                  class="content-type__img"
-                >
+                <div class="content-type__img">
                   <%= image_tag "content_types/#{content_type.downcase}.svg", class: 'content-type__image' rescue nil %>
                 </div>
                 <div class="content-type__content">
@@ -96,4 +95,5 @@
         </ul>
       </div>
     </div>
+  <% end %>
 </div>
