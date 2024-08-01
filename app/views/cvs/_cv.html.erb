@@ -7,7 +7,7 @@
           class="avatar__image"
         >
         <%= link_to '', destroy_avatar_cv_path(@cv), class: 'avatar__delete icon icon--delete',
-            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } if author? %>
         </div>
       <% else %>
         <div class="avatar__image avatar__image--default">
