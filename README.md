@@ -1,24 +1,53 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Тестовое приложения для Fortis
 
-Things you may want to cover:
+Приложение представляет собой простой генератор резюме (cv), позволяющий создавать персонализированную веб-страницу из предложенных контент-блоков (content_blocks). Контент блоки делятся на три основных типа :
 
-* Ruby version
+- Текстовый блок (paragraph)
+- Блок с картинкой (image)
+- Блок с документом (document)
 
-* System dependencies
+Также пользователь может ранжировать контент-блоки, перемещая их за соответствующую иконку.
+Пользователь может просматривать все резюме, но редактирование доступно только тех страниц, автором которых он является.
 
-* Configuration
+## База данных
 
-* Database creation
+<img src="./docs/fortis-bd.drawio.svg" style="width: 70%">
+<br>
 
-* Database initialization
+## Версии и зависимости
 
-* How to run the test suite
+- ruby 3.1.2
+- rails 7.0.0
+- bundler 2.5.5
 
-* Services (job queues, cache servers, search engines, etc.)
+## Установка
 
-* Deployment instructions
+Установите необходимые гемы:
 
-* ...
+```shell
+bundle install
+```
+
+Выполните установку dartsass-rails окружения:
+
+```shell
+bin/rails dartsass:install
+```
+
+## Локальный запуск
+
+### Создание и заполнение БД тестовыми данными
+
+```shell
+bin/rake db:create
+bin/rake db:migrate
+bin/rake db:seed
+```
+
+### Запуск development сервера:
+
+```shell
+bin/dev
+```
