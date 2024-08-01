@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "active_storage_validations"
 gem "bootsnap", require: false
 gem "dartsass-rails"
+gem "faker"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg", "~> 1.1"
